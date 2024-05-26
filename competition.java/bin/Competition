@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Competition {
+    private String name;
+    private String area;
+    private List<College> colleges;
+    private List<Judge> judges;
+
+    public Competition(String name, String area) {
+        this.name = name;
+        this.area = area;
+        this.colleges = new ArrayList<>();
+        this.judges = new ArrayList<>();
+    }
+
+    public void addCollege(College college) {
+        colleges.add(college);
+    }
+
+    public void addJudge(Judge judge) {
+        judges.add(judge);
+    }
+
+    public void displayResults() {
+        for (College college : colleges) {
+            System.out.println("College: " + college.getName() + ", Points: " + college.getTotalPoints());
+        }
+    }
+}

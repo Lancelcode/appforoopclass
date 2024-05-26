@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class College {
+    private String name;
+    private List<Student> students;
+    private Coach coach;
+    private int totalPoints;
+
+    public College(String name, Coach coach) {
+        this.name = name;
+        this.students = new ArrayList<>();
+        this.coach = coach;
+        this.totalPoints = 0;
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void addPoints(int points) throws InvalidPointsException {
+        if (points < 0) {
+            throw new InvalidPointsException("Points cannot be negative");
+        }
+        totalPoints += points;
+    }
+
+    public int getTotalPoints() {
+        return totalPoints;
+    }
+
+    public String getName() {
+        return name;
+    }
+}

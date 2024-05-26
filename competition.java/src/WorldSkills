@@ -1,0 +1,40 @@
+public class WorldSkills {
+    public static void main(String[] args) {
+        // Create competition
+        Competition competition = new Competition("World Skills", "Software Development");
+
+        // Create coaches and judges
+        Coach coach1 = new Coach("Coach John");
+        Judge judge1 = new Judge("Judge Alice", "Software Development");
+
+        // Create college and students
+        College college1 = new College("Edinburgh College", coach1);
+
+        // Register students (normally read from a file)
+        try {
+            Student student1 = Student.fromFile("student1.txt");
+            Student student2 = Student.fromFile("student2.txt");
+            college1.addStudent(student1);
+            college1.addStudent(student2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Add college to competition
+        competition.addCollege(college1);
+
+        // Add judge to competition
+        competition.addJudge(judge1);
+
+        // Award points
+        try {
+            judge1.awardPoints(college1, 85);
+            judge1.awardPoints(college1, -10); // This will throw an exception
+        } catch (InvalidPointsException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Display results
+        competition.displayResults();
+    }
+}

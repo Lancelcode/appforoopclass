@@ -1,0 +1,17 @@
+public class Judge extends Coach {
+    private String specialization;
+
+    public Judge(String name, String specialization) {
+        super(name);
+        this.specialization = specialization;
+    }
+
+    public void awardPoints(College college, int points) throws InvalidPointsException {
+        college.addPoints(points);
+    }
+
+    @Override
+    public void assist() {
+        System.out.println("Judge " + getName() + " cannot assist students.");
+    }
+}
